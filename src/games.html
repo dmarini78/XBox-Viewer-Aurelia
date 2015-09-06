@@ -1,0 +1,26 @@
+<template>
+	<nav>
+		<ul class="pagination">
+			<li class="${currentPage == 0 ? 'disabled' : ''}">
+				<a href="#" aria-label="Previous" click.trigger="changePage(currentPage - 1)">
+					<span aria-hidden="true">&laquo;</span>
+				</a>
+			</li>
+			<li repeat.for="i of numPages">
+				<a href="#" click.trigger="$parent.changePage(i)">${i + 1}</a>
+			</li>
+			<li class="${(currentPage + 1) >= numPages ? 'disabled' : ''}">
+				<a href="#" aria-label="Next" click.trigger="changePage(currentPage + 1)">
+					<span aria-hidden="true">&raquo;</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+	
+	
+  	<div class="row">
+		<div class="col-xs-6 col-md-3" repeat.for="game of currentPageOfGames">
+			<span>${game.name}</span>
+		</div>
+	</div>
+</template>
