@@ -6,7 +6,7 @@ var config = {
       modules: [
         '*',
         'aurelia-bootstrapper',
-        'aurelia-fetch-client',
+        'aurelia-http-client',
         'aurelia-router',
         'aurelia-animator-css',
         'github:aurelia/templating-binding', 
@@ -32,19 +32,3 @@ var config = {
 
 cli.command('bundle', config);
 cli.command('unbundle', config);
-
-
-/*
-If you don't like your original `index.html` to be modified and want to have a new index file instead with the template bundle injection, use a bundle configuration like this:
-  template: {
-    "dist/app-bundle": {
-      pattern: 'dist/*.html',
-      options: {
-        inject: {
-          indexFile: 'index.html',
-          destFile: 'dest_index.html'
-        }
-      }
-    }
-  }
-*/

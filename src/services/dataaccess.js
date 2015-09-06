@@ -1,4 +1,3 @@
-import {inject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-http-client';
 import {Game} from '../models/Game';
 
