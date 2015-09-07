@@ -1,4 +1,4 @@
-import {inject, computedFrom} from 'aurelia-framework';
+import {inject} from 'aurelia-framework';
 import {DataContext} from './services/dataaccess';
 
 @inject(DataContext)
@@ -7,38 +7,6 @@ export class Games {
     this.data = datacontext;
     this.xboxUserId = undefined;
     this.games = [];
-    this.currentPage = 0;
-    this.recordsPerPage = 8;
-  }
-  
-  @computedFrom('games', 'recordsPerPage')  
-  get numPages() {
-    return Math.ceil(this.games.length / this.recordsPerPage);
-  }
-  
-  @computedFrom('games', 'currentPage', 'recordsPerPage')  
-  get currentPageOfGames() {
-    let startIndex = (this.currentPage * this.recordsPerPage);
-    if(startIndex > 0) {
-      startIndex--;
-    }
-    let endIndex = startIndex + this.recordsPerPage;
-    if(endIndex >= this.games.length) {
-        endIndex = this.games.length - 1;
-    }
-    
-    return this.games.slice(startIndex, endIndex);
-  }
-
-  changePage(newPage) {
-    if(newPage < 0)
-      newPage = 0;
-    else if (newPage >= this.numPages) {
-      newPage = this.numPages - 1;
-    }
-    
-    this.currentPage = newPage;
-    return false;
   }
   
   canActivate(path) {
