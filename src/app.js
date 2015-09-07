@@ -15,7 +15,6 @@ export class App {
     config.map([
       { route: [''], name: 'home', moduleId: 'home', title: 'Home' },
       { route: ['games/:gamerTag'], name: 'games', moduleId: 'games', title:'Games' },
-      { route: ['achievements/:gamerTag'], name: 'achievements', moduleId: 'achievements', title:'Achievements' }
     ]);
 
     this.router = router;
