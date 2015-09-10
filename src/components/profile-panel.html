@@ -1,0 +1,20 @@
+<template>
+	<div class="panel panel-default" style="width: 500px;">
+  		<div class="panel-heading" style="background-color:darkgreen; color: white;">
+			  ${profile.GameDisplayName}
+		</div>
+  		<div class="panel-body">
+			<div class="media">
+				<div class="media-left">
+					<img class="media-object img-thumbnail" src="${profile.GameDisplayPicRaw}" alt="Gamer Image">
+				</div>
+				<div class="media-body">
+					<h4>Account Tier: <small>${profile.AccountTier}</small></h4>
+					<h4>Gamerscore: <small>${profile.Gamerscore}</small></h4>
+					<h4>Rep: <small>${profile.XboxOneRep}</small></h4>
+					<h4>Sponsored: <small>${profile.isSponsoredUser ? 'Yes' : 'No'}</small></h4>	
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

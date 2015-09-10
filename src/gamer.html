@@ -1,0 +1,23 @@
+<template>
+	<require from="components/games-panel"></require>
+	<require from="components/profile-panel"></require>
+
+	<ul class="nav nav-tabs">
+		<li class="active"><a data-toggle="tab" href="#profile">Profile</a></li>
+		<li><a data-toggle="tab" href="#360">Xbox 360 Games</a></li>
+		<li><a data-toggle="tab" href="#xone">Xbox One Games</a></li>
+	</ul>
+	
+	<div class="tab-content">
+		<div id="profile" class="tab-pane fade in active">
+			<profile-panel profile.bind="profile"></profile-panel>
+		</div>
+		<div id="360" class="tab-pane fade">
+			<games-panel games.bind="games360"></games-panel>
+		</div>
+		<div id="xone" class="tab-pane fade">
+			<games-panel games.bind="gamesxone"></games-panel>
+		</div>
+	</div>
+	
+</template>

@@ -1,0 +1,14 @@
+<template>
+	<require from="components/pager"></require>
+
+	<pager items.bind="games" items-per-page.bind="8" pager.ref="gamesPager"></pager>
+
+  	<div class="row">
+		<div class="col-xs-6 col-md-3" repeat.for="item of gamesPager.currentPageItems">
+			<compose model.bind="item" view-model="components/game-info" view="components/game-info-${item.system}.html"></game-info>
+		</div>
+	</div>
+	
+	<!--duplicate the pager from above 
+	<compose view-model.bind="pagerModel"></compose>-->
+</template>

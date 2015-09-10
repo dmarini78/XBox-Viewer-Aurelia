@@ -1,0 +1,17 @@
+<template>
+	<div class="container">
+		
+		<form class="form-inline">
+			<div class="form-group">
+				<label for="gamerTagInput">Gamer Tag:</label>
+				<input class="form-control" id="gamerTagInput" placeholder="Enter GamerTag" value.bind="gamerTag">
+				<button class="btn btn-primary" click.trigger="showUserProfile()">See Games!</button>
+			</div>
+		</form>
+		
+		<div style="margin-top: 20px;">
+			<router-view></router-view>  
+		</div>
+		
+	</div>
+</template>

@@ -47,6 +47,7 @@ System.config({
     "css": "github:systemjs/plugin-css@0.1.13",
     "fetch": "github:github/fetch@0.9.0",
     "font-awesome": "npm:font-awesome@4.4.0",
+    "moment/moment": "github:moment/moment@2.10.6",
     "github:aurelia/animator-css@0.15.0": {
       "aurelia-metadata": "github:aurelia/metadata@0.7.3",
       "aurelia-templating": "github:aurelia/templating@0.14.1"

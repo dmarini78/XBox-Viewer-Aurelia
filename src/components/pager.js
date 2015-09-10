@@ -2,14 +2,13 @@ import {customElement, bindable, computedFrom} from 'aurelia-framework';
 
 @customElement()
 export class Pager {
-	@bindable items
-	@bindable itemsPerPage	
+	@bindable items = [];
+	@bindable itemsPerPage = 8;
 	
-	bind() {
+	constructor() {
 		this.currentPage = 0;
-		this.itemsPerPage = 8;
 	}
-	
+
 	@computedFrom('items', 'itemsPerPage')  
 	get numPages() {
 		return Math.ceil(this.items.length / this.itemsPerPage);

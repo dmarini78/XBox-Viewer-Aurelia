@@ -1,43 +1,37 @@
 import {inject} from 'aurelia-framework';
-import {DataContext} from './services/dataaccess';
+import {GamerService} from './services/gamerService';
 
-@inject(DataContext)
+@inject(GamerService)
 export class Games {
-  constructor(datacontext) {
-    this.data = datacontext;
-    this.xboxUserId = undefined;
-    this.games = [];
-  }
-  
-  canActivate(path) {
-    return new Promise(resolve => {
-      if (!path.gamerTag || path.gamerTag == '') {
-        resolve(false);
-      } 
-      
-      this.data.getUserFromGamerTagAsync(path.gamerTag)
-        .then(message => {
-            this.xboxUserId = message.response;
-            resolve(true);
-          },
-          message => {
-             alert(`User '${path.gamerTag}' does not exist.`);
-             resolve(false);
-        });
-    });
-  }
-  
-  activate() {
-    //get the gamer profile first, then games, all before loading is done.
-    return this.data.getGamesForUserAsync(this.xboxUserId)
-      .then(games => {
-        this.games = games.sort((a,b) => {
-          if (a.name < b.name)
-            return -1;
-          if (a.name > b.name)
-            return 1;
-          return 0; 
-          });
-      });
-  }
+    constructor(gamerService) {
+        this.gamerService = gamerService;
+        this.games = [];
+    }
+
+    canActivate(path) {
+        if (!path.gamerTag || path.gamerTag == '') {
+            return false;
+        }
+
+        return this.gamerService.getXuidAsync(path.gamerTag)
+            .then(xuid => true)
+            .catch(message => {
+                alert(`User '${path.gamerTag}' does not exist.`);
+                return false;
+            });
+    }
+
+    activate(path) {
+        return this.gamerService
+            .getGamesAsync(path.gamerTag, path.system)
+            .then(games => {
+                this.games = games.sort((a, b) => {
+                    if (a.name < b.name)
+                        return -1;
+                    if (a.name > b.name)
+                        return 1;
+                    return 0;
+                });
+            });
+    }
 }

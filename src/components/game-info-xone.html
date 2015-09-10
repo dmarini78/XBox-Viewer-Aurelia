@@ -1,0 +1,34 @@
+<template>
+	<div class="panel panel-default">
+  		<div class="panel-heading" style="background-color:darkgreen; color: white;">
+			  ${game.name}
+		</div>
+  		<div class="panel-body">
+			<div class="media">
+				<div class="media-left">
+					<img class="media-object img-thumbnail" src="images/xbox_logo.jpg" alt="Game Image">
+				</div>
+				<div class="media-body">
+					<h5>Earned Achievements: <small>${game.earnedAchievements}</small></h5>
+					<h5>Current Gamerscore: <small>${game.currentGamerscore}</small></h5>
+					<h5>Total Gamerscore: <small>${game.maxGamerscore}</small></h5>	
+				</div>
+		</div>
+		</div>
+		<div class="panel-footer">
+			<div>
+				<i class="fa fa-trophy" style="font-size: 20px; float:left; color: gold; margin-right: 5px;"></i>
+				<div class="progress" style="margin-bottom: 0px;">
+					<div 	class="progress-bar progress-bar-warning progress-bar-striped" 
+							role="progressbar" 
+							aria-valuenow="${game.currentGamerscore}" 
+							aria-valuemin="0" 
+							aria-valuemax="${game.maxGamerscore}" 
+							css="width: ${(game.currentGamerscore / game.maxGamerscore) * 100.0}%">
+					</div>
+				</div>
+			</div>
+			<div style="text-align: center;" if.bind="game.maxGamerscore > 0">${((game.currentGamerscore / game.maxGamerscore) * 100.0).toFixed(1)}% game completion
+		</div>
+	</div>
+</template>

@@ -1,0 +1,34 @@
+<template>
+	<div class="panel panel-default">
+  		<div class="panel-heading" style="background-color:darkgreen; color: white;">
+			  ${game.name}
+		</div>
+  		<div class="panel-body">
+			<div class="media">
+				<div class="media-left">
+					<img class="media-object img-thumbnail" src="images/xbox_logo.jpg" alt="Game Image">
+				</div>
+				<div class="media-body">
+					<h5>Last Played: <small>${game.localLastPlayed}</small></h5>
+					<h5>Current Gamerscore: <small>${game.currentGamerscore}</small></h5>
+					<h5>Total Gamerscore: <small>${game.totalGamerscore}</small></h5>	
+				</div>
+		</div>
+		</div>
+		<div class="panel-footer">
+			<div>
+				<i class="fa fa-trophy" style="font-size: 20px; float:left; color: gold; margin-right: 5px;"></i>
+				<div class="progress" style="margin-bottom: 0px;">
+					<div 	class="progress-bar progress-bar-warning progress-bar-striped" 
+							role="progressbar" 
+							aria-valuenow="${game.currentAchievements}" 
+							aria-valuemin="0" 
+							aria-valuemax="${game.totalAchievements}" 
+							css="width: ${(game.currentAchievements / game.totalAchievements) * 100.0}%">
+					</div>
+				</div>
+			</div>
+			<div style="text-align: center;">${game.currentAchievements} of ${game.totalAchievements} achievements
+		</div>
+	</div>
+</template>
